@@ -161,8 +161,8 @@ class CalcScreen extends StatelessWidget {
     
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: const Text('GPA & CGPA Calculator'),
+        automaticallyImplyLeading: true,
+         
         centerTitle: true,
         elevation: 5,
         shape: const RoundedRectangleBorder(

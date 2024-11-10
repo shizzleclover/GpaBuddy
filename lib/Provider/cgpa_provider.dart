@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:gpa_calc/Models/Course.dart';
+ 
+import 'package:gpa_calc/Models/course_new.dart';
 import 'package:gpa_calc/Models/semester.dart';
  
 

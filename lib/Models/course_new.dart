@@ -1,7 +1,7 @@
 
 import 'package:hive/hive.dart';
 
-part 'Course.g.dart';
+part 'course_new.g.dart';
 
 @HiveType(typeId: 0)
 

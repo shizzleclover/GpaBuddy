@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:gpa_calc/Models/course_new.dart';
 import 'package:hive/hive.dart';
-import 'package:gpa_calc/Models/course.dart';
+ 
 
 class GpaCalcProvider with ChangeNotifier {
   final Box<Course> _courseBox = Hive.box<Course>('courses');

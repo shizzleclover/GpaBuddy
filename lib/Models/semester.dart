@@ -1,4 +1,5 @@
-import 'package:gpa_calc/Models/Course.dart';
+ 
+import 'package:gpa_calc/Models/course_new.dart';
 import 'package:hive/hive.dart';
 
 part 'semester.g.dart';

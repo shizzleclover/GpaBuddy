@@ -1,8 +1,10 @@
  import 'package:flutter/material.dart';
-import 'package:gpa_calc/Models/Course.dart';
+ 
+import 'package:gpa_calc/Models/course_new.dart';
 import 'package:gpa_calc/Provider/calc_provider.dart';
 import 'package:gpa_calc/Provider/cgpa_provider.dart';
 import 'package:gpa_calc/Screens/homeScreen.dart';
+// ignore: unnecessary_import
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';

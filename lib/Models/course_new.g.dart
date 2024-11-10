@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'Course.dart';
+part of 'course_new.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
