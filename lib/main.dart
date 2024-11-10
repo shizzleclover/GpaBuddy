@@ -1,4 +1,5 @@
  import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
  
 import 'package:gpa_calc/Models/course_new.dart';
 import 'package:gpa_calc/Provider/calc_provider.dart';
@@ -32,10 +33,18 @@ void main() async {
 
   @override
   Widget build(BuildContext context) {
-    return const  MaterialApp(
-      title: 'GPA calculator',
+    return ScreenUtilInit(
+      designSize: const Size(375, 812), // iPhone X size for reference
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return const MaterialApp(
+            title: 'GPA calculator',
       home:   HomeScreen(),
       debugShowCheckedModeBanner: false,
+        );
+      }
+    
       
     );
   }
