@@ -21,6 +21,7 @@ class GpaCalcProvider with ChangeNotifier {
     notifyListeners();
   }
 
+
   // Calculate GPA and return total credits and total points for current courses
   Map<String, dynamic> calculateGpa() {
     _totalCredits = 0;
@@ -66,4 +67,6 @@ class GpaCalcProvider with ChangeNotifier {
     _totalPoints = 0.0;
     notifyListeners();
   }
+
+ 
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../Provider/calc_provider.dart';
 
 // ignore: must_be_immutable
@@ -20,11 +21,15 @@ class CalcScreen extends StatelessWidget {
       context: context,
       builder: (_) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.r)),
-        title: const Text('GPA Results', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: Text(
+          'GPA Results',
+          style: GoogleFonts.poppins(fontWeight: FontWeight.bold, color: Colors.blueGrey[900]),
+        ),
         content: Text(
           'GPA: ${result['gpa'].toStringAsFixed(2)}\n'
           'Total Credits: ${result['totalCredits']}\n'
           'Total Points: ${result['totalPoints'].toStringAsFixed(2)}',
+          style: GoogleFonts.poppins(color: Colors.blueGrey[700]),
         ),
         actions: [
           TextButton(
@@ -53,6 +58,10 @@ class CalcScreen extends StatelessWidget {
     Provider.of<GpaCalcProvider>(context, listen: false).clearCourses();
   }
 
+
+  // void _removeCourse(BuildContext context) {
+  //   Provider.of<GpaCalcProvider>(context, listen: false)._removeCourse();
+  // }
   @override
   Widget build(BuildContext context) {
     var courses = Provider.of<GpaCalcProvider>(context).courses;
@@ -61,8 +70,13 @@ class CalcScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
+        title: Text(
+          'GPA Calculator',
+          style: GoogleFonts.poppins(fontSize: 20.sp, fontWeight: FontWeight.w600),
+        ),
         centerTitle: true,
         elevation: 5,
+        backgroundColor: Colors.blueGrey[800],
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(bottom: Radius.circular(20.r)),
         ),
@@ -71,7 +85,6 @@ class CalcScreen extends StatelessWidget {
         padding: EdgeInsets.all(20.w),
         child: Row(
           children: [
-            // Left Container: Input Fields and Course List
             Expanded(
               flex: 2,
               child: Container(
@@ -81,7 +94,7 @@ class CalcScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15.r),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.blueGrey.withOpacity(0.1),
                       blurRadius: 10.r,
                       offset: Offset(0, 4.h),
                     ),
@@ -94,6 +107,7 @@ class CalcScreen extends StatelessWidget {
                       controller: nameController,
                       decoration: InputDecoration(
                         labelText: 'Course Name',
+                        labelStyle: GoogleFonts.poppins(),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.r)),
                       ),
                     ),
@@ -103,6 +117,7 @@ class CalcScreen extends StatelessWidget {
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                         labelText: 'Credits',
+                        labelStyle: GoogleFonts.poppins(),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.r)),
                       ),
                     ),
@@ -112,7 +127,7 @@ class CalcScreen extends StatelessWidget {
                       items: gradeOptions.map((grade) {
                         return DropdownMenuItem<String>(
                           value: grade,
-                          child: Text(grade),
+                          child: Text(grade, style: GoogleFonts.poppins()),
                         );
                       }).toList(),
                       onChanged: (value) {
@@ -120,6 +135,7 @@ class CalcScreen extends StatelessWidget {
                       },
                       decoration: InputDecoration(
                         labelText: 'Grade (A - F)',
+                        labelStyle: GoogleFonts.poppins(),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12.r)),
                       ),
                     ),
@@ -129,8 +145,9 @@ class CalcScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
                         padding: EdgeInsets.symmetric(vertical: 14.h),
+                        backgroundColor: Colors.blueGrey[700],
                       ),
-                      child: const Text('Add Course'),
+                      child: Text('Add Course', style: GoogleFonts.poppins(color: Colors.white)),
                     ),
                     SizedBox(height: 20.h),
                     Expanded(
@@ -141,10 +158,18 @@ class CalcScreen extends StatelessWidget {
                           return Card(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
                             elevation: 3,
+                            color: Colors.blueGrey[50],
                             margin: EdgeInsets.symmetric(vertical: 8.h),
                             child: ListTile(
-                              title: Text(course.name),
-                              subtitle: Text('Credits: ${course.credits} | Grade: ${course.grade}'),
+                              title: Text(course.name, style: GoogleFonts.poppins(fontWeight: FontWeight.w500)),
+                              subtitle: Text(
+                                'Credits: ${course.credits} | Grade: ${course.grade}',
+                                style: GoogleFonts.poppins(),
+                              ),
+                              trailing: IconButton(
+                                icon: Icon(Icons.delete, color: Colors.red[400]),
+                                onPressed:  () {},
+                              ),
                             ),
                           );
                         },
@@ -155,18 +180,16 @@ class CalcScreen extends StatelessWidget {
               ),
             ),
             SizedBox(width: 20.w),
-
-            // Right Container: GPA Results
             Expanded(
               flex: 1,
               child: Container(
                 padding: EdgeInsets.all(16.w),
                 decoration: BoxDecoration(
-                  color: Colors.deepPurple[50],
+                  color: Colors.blueGrey[100],
                   borderRadius: BorderRadius.circular(15.r),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
+                      color: Colors.blueGrey.withOpacity(0.1),
                       blurRadius: 10.r,
                       offset: Offset(0, 4.h),
                     ),
@@ -177,7 +200,8 @@ class CalcScreen extends StatelessWidget {
                   children: [
                     Text(
                       'GPA Results',
-                      style: TextStyle(fontSize: 24.sp, fontWeight: FontWeight.bold, color: Colors.deepPurple),
+                      style: GoogleFonts.poppins(
+                          fontSize: 24.sp, fontWeight: FontWeight.bold, color: Colors.blueGrey[800]),
                     ),
                     SizedBox(height: 16.h),
                     Consumer<GpaCalcProvider>(
@@ -187,11 +211,17 @@ class CalcScreen extends StatelessWidget {
                           children: [
                             Text(
                               'GPA: ${result['gpa'].toStringAsFixed(2)}',
-                              style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
+                              style: GoogleFonts.poppins(fontSize: 20.sp, fontWeight: FontWeight.w600),
                             ),
                             SizedBox(height: 8.h),
-                            Text('Total Credits: ${result['totalCredits']}'),
-                            Text('Total Points: ${result['totalPoints'].toStringAsFixed(2)}'),
+                            Text(
+                              'Total Credits: ${result['totalCredits']}',
+                              style: GoogleFonts.poppins(),
+                            ),
+                            Text(
+                              'Total Points: ${result['totalPoints'].toStringAsFixed(2)}',
+                              style: GoogleFonts.poppins(),
+                            ),
                           ],
                         );
                       },
@@ -201,21 +231,20 @@ class CalcScreen extends StatelessWidget {
                       onPressed: () => _calculateGpa(context),
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
-                        backgroundColor: Colors.deepPurple,
+                        backgroundColor: Colors.blueGrey[800],
                         padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 30.w),
                       ),
-                      child: const Text(
+                      child: Text(
                         'Calculate GPA',
-                        style: TextStyle(color: Colors.white),
+                        style: GoogleFonts.poppins(color: Colors.white),
                       ),
                     ),
-
-                     SizedBox(height: 20.h,),
+                    SizedBox(height: 20.h),
                     ElevatedButton(
-                    onPressed: () => _clearCourse(context),
-                    style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                    child: const Text("Clear All Data"),
-                  ),
+                      onPressed: () => _clearCourse(context),
+                      style: ElevatedButton.styleFrom(backgroundColor: Colors.red[400]),
+                      child: Text("Clear All Data", style: GoogleFonts.poppins(color: Colors.white)),
+                    ),
                   ],
                 ),
               ),
