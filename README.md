@@ -15,7 +15,7 @@ Provider: State management to handle data updates across the app.
 How to Run:
 Clone the repository:
  
-git clone https://github.com/yourusername/gpa-cgpa-calculator.git
+git clone "repo-link"
 Install dependencies:
  
 flutter pub get
